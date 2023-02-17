@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% block title %}
+{% endblock title %}
+
+<div><a href="{% url 'add' %}" type="button" class="btn btn-secondary btn-sm">Добавить задание</a></div>
+
+<table class="table table-light table-bordered table-hover table-striped">
+    <thead align="center">
+        <tr>
+            <th>Что сделать</th>
+            <th>Результат</th>
+            <th>Начало</th>
+            <th>Завершено</th>
+            <th>Изменить</th>
+            <th>Удалить</th>
+        </tr>
+    </thead>
+    {% for todo in todo_ %}
+    <tr>
+        <td>{{ todo.name }}</td>
+        <td align="center">
+            {% if todo.is_done %}
+                +
+            {% else %}
+                -
+            {% endif%}
+        </td>
+        <td>{{ todo.timestamp_start }}</td>
+        <td>
+            {% if todo.timestamp_end %}
+                {{ todo.timestamp_end }}
+            {% else %}
+                -
+            {% endif %}
+        </td>
+        <td>
+            <a href="{% url 'edit' todo.pk %}" type="button" class="btn btn-secondary btn-sm">Изменить</a>
+        </td>
+        <td>
+            <a href="{% url 'delete' todo.pk %}" type="button" class="btn btn-secondary btn-sm">Удалить</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'base_list.html' %}
+
+{% block title %}
+<h4 align="center">Список заданий</h4>
+<br>
+<a href="{% url 'load' %}" type="button" class="btn btn-secondary btn-sm">Все</a>
+<a href="#" type="button" class="btn btn-outline-secondary btn-sm">Сделано</a>
+<a href="{% url 'load_off' %}" type="button" class="btn btn-secondary btn-sm">Не сделано</a>
+<br>
+<br>
+{% endblock title %}
